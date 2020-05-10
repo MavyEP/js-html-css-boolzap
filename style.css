@@ -358,3 +358,38 @@ input {
   display: flex;
   justify-content: center;
 }
+
+
+/* !!! SEZIONE PER GLI HOVER O ACTIVE O FOCUS !!! */
+
+.left_header_content img:hover, .right_header_content span:hover {
+  cursor: pointer;
+}
+
+.sounds_allerts:hover {
+  cursor: pointer;
+}
+
+.input_left_section i:hover {
+  cursor: pointer;
+}
+
+.utente:hover {
+  cursor: pointer;
+}
+
+.utente_active:hover {
+  cursor: pointer;
+}
+
+.utente_active_actions i:hover {
+  cursor: pointer;
+}
+
+.text:hover {
+  cursor: default;
+}
+
+.footer_content i:hover {
+  cursor: pointer;
+}
