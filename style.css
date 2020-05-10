@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 
+ /* INFO PAGE */
 
 .gray_background {
    background-color: rgba(234, 234, 234, 1);
@@ -18,6 +19,8 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+/* CREO UN DIV PER FARE LO SFONDO VERDE  */
+
 .background_green {
   background-color: rgba(53, 134, 117, 1);
   height: 150px;
@@ -27,8 +30,10 @@ body {
   z-index: -1;
 }
 
+/* MISURE VARIE  */
+
 .container {
-  width: 1600px;
+  width: 1400px;
   height: 95%;
   margin: auto;
   background-color: white;
@@ -48,9 +53,12 @@ body {
 }
 
 .head_mesure {
-  height: 80px;
+  height: 60px;
   width: 100%;
 }
+
+/* !!! HEADER LEFT  !!! */
+
 
 .header_left {
   display: flex;
@@ -59,19 +67,20 @@ body {
 }
 
 .left_header_content {
-  padding: 10px;
+  height: 40px;
+  width: 40px;
+  margin-left: 15px;
 }
 
 .left_header_content>img {
-  height: 55px;
-  width: 55px;
+  height: 100%;
+  width: 100%;
   border-radius: 50%;
   background-color: white;
   object-fit: cover;
 }
 
 .right_header_content {
-  height: 54px;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -84,43 +93,43 @@ body {
 }
 
 .right_header_content span {
-  height: 31px;
-  width: 31px;
+  height: 40px;
+  width: 40px;
   display: flex;
   margin-right: 5px;
 }
 
-.right_header_content span:hover {
-  cursor: pointer;
-}
-
-.img_size {
-  height: 60px;
-  width: 60px;
-}
+/* !!! ALLERTS BELL  !!! */
 
 .sounds_allerts {
+  height: 100px;
   display: flex;
   align-items: center;
   background-color: rgb(142, 218, 252);
 }
 
 .sounds_allerts img {
-  background-color: white;
+  height: 100%;
+  width: 100%;
   border-radius: 50%;
+  background-color: white;
+  object-fit: cover;
 }
 
 .sounds_allerts>div {
-  height: 85px;
+    height: 50px;
 }
+
 
 .sounds_allerts>div:first-child {
   display: flex;
   align-items: center;
   margin-left: 12px;
+  width: 50px;
 }
 
 .sounds_allerts>div:last-child>span {
+  padding-top: 5px;
   text-decoration: underline;
   font-size: 14px;
   opacity: 0.6;
@@ -132,6 +141,8 @@ body {
   justify-content: center;
   margin-left: 10px;
 }
+
+/* !!! INPUT RICERCA CHATS  !!! */
 
 .input_left_section {
   height: 50px;
@@ -146,27 +157,36 @@ body {
   width: 100%;
   margin: 0px 10px;
   height: 35px;
+  position: relative;
 }
 
-.input_content i {
-  font-size: 17px;
-  padding: 9px 25px;
-  background-color: white;
-  border-radius: 5px  0px 0px 5px;
+.input_content>i {
+  font-size: 18px;
   color: rgb(185, 181, 178);
+  position: absolute;
+  left: 3%;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .input_content input {
-  width: calc(100% - 46px);
-  border-radius: 0px  5px 5px 0px;
+  width: 100%;
+  border-radius: 20px;
   border: 1px solid  rgb(233, 235, 234);
   box-shadow: none;
-  padding-left: 10px;
+  padding-left: 50px;
+  display: inline-block;
 }
+
+input {
+  outline: none;
+}
+
+/* !!! FINESTRA CHAT   !!! */
 
 .utente {
   display: flex;
-  padding: 15px 20px;
+  padding: 10px 20px;
   border-top: 1px solid rgba(234, 234, 234, 0.8);
 }
 
@@ -178,8 +198,8 @@ body {
 }
 
 .utente div:first-child {
-    height: 70px;
-    width: 70px;
+    height: 50px;
+    width: 50px;
 }
 
 .utente img {
@@ -198,11 +218,13 @@ body {
 .users_messages {
   overflow-y: scroll;
   width: 100%;
-  height: calc(100% - 214px)
+  height: calc(100% - 210px)
 }
 
+/* !!! INIZIO PARTE DESTRA MAIN  !!! */
+
 .header_main {
-  height: 9%;
+  height: 60px;
   width: 100%;
   background-color: rgba(234, 234, 234, 1);
   border-left: 1px solid rgba(210, 210, 210, 1);
@@ -214,10 +236,12 @@ body {
 
 .main_content_chat {
   width: 100%;
-  height: 80%;
+  height: calc(100% - 120px);
   background-image: url(https://metodofanart.com.br/wp-content/uploads/2017/07/background-whats.jpg);
   background-size: cover;
 }
+
+/* !!! HEADER MAIN UTENTE ACTIVE  !!! */
 
 .utente_active img {
   height: 100%;
@@ -231,14 +255,18 @@ body {
 }
 
 .utente_active  div:first-child {
-  height: 60px;
-  width: 60px;
+  height: 40px;
+  width: 40px;
+  margin-left: 15px;
 }
 
 .utente_active  div:last-child p {
-  padding-top: 5px;
-  font-size: 14px;
+  font-size: 12px;
   opacity: 0.6;
+}
+
+.utente_active  div:last-child h3 {
+  font-size: 18px;
 }
 
 .utente_active div:last-child {
@@ -249,23 +277,25 @@ body {
 }
 
 .utente_active_actions i {
-  font-size: 22px;
-  padding-left: 15px;
+  font-size: 20px;
+  padding: 10px;
   color: rgb(177, 177, 177);
 }
+
+/* !!! MAIN CHAT ZONA PRINCIPALE  !!! */
 
 .main_content_chat {
   overflow-y: scroll;
 }
 
 .container_chat {
-  width: 80%;
+  width: 85%;
   margin: auto;
   height: 100%;
 }
 
 .text  {
-    font-size: 16px;
+    font-size: 13px;
 }
 
 .white_text {
@@ -298,8 +328,10 @@ body {
   clear: both;
 }
 
+/* !!! INPUT DI CHAT E EMOCTIONS !!! */
+
 .footer_content {
-  height: 11%;
+  height: 60px;
   width: 100%;
   background-color: rgb(245, 237, 234);
   border-left: 1px solid rgba(210, 210, 210, 1);
@@ -314,7 +346,7 @@ body {
 }
 
 .footer_content input {
-  height: 80%;
+  height: 60%;
   width: 80%;
   border: none;
   border-radius: 5px;
