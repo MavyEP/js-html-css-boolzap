@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
     <title>Spotify - Web</title>
   </head>
-  <body>
+  <body class="noselect">
     <div class="background_green"></div>
     <div class="container">
       <div class="left_section_fixed">
@@ -105,16 +105,17 @@
         </div>
         <div class="main_content_chat">
           <div class="container_chat">
-              <p class="text white_text text_left margin_top_chat" >Ciao come stai?</p>
-              <p class="text green_text text_right margin_chat">Tutto bene te invece?</p>
-              <p class="text white_text text_left margin_chat">La quarantena mi uccide...</p>
-              <p class="text green_text text_right margin_chat">Tsk...call of duy easy</p>
+              <p class="message_received margin_top_chat" >Ciao come stai?</p>
           </div>
         </div>
         <div class="footer_content">
           <div class=""><i class="far fa-smile"></i></div>
-          <input type="text" name="" value="" placeholder="Scrivi un messaggio">
-          <div class=""><i class="fas fa-microphone"></i></div>
+          <input  id="chat_input" type="text" name="" value="" placeholder="Scrivi un messaggio">
+          <div class=""><i class="fas fa-microphone"></i><i id="send_action" class="disabled fas fa-paper-plane"></i></div>
+          <div class="template">
+            <p class="message_sent"></p>
+            <p class="message_received"></p>
+          </div>
         </div>
       </div>
     </div>

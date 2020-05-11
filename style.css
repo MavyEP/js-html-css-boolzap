@@ -294,38 +294,30 @@ input {
   height: 100%;
 }
 
-.text  {
+.container_chat {
     font-size: 13px;
 }
 
-.white_text {
+.message_received {
   padding: 15px;
   background-color: white;
   border-radius: 10px;
-}
-
-.green_text {
-  padding: 15px;
-  background-color: lightgreen;
-  border-radius: 10px;
-}
-
-.margin_top_chat {
-  margin-top: 50px;
-}
-
-.margin_chat {
-  margin-top: 10px;
-}
-
-.text_left {
+  margin-top: 15px;
   float: left;
   clear: both;
 }
 
-.text_right{
+.message_sent {
+  padding: 15px;
+  background-color: lightgreen;
+  border-radius: 10px;
+  margin-top: 15px;
   float: right;
   clear: both;
+}
+
+.margin_top_chat {
+  margin-top: 50px;
 }
 
 /* !!! INPUT DI CHAT E EMOCTIONS !!! */
@@ -353,14 +345,21 @@ input {
   padding-left: 15px;
 }
 
-.footer_content div {
+.footer_content>div {
   width: 10%;
   display: flex;
   justify-content: center;
 }
 
+.footer_content>.template  {
+  display: none;
+}
 
 /* !!! SEZIONE PER GLI HOVER O ACTIVE O FOCUS !!! */
+
+.disabled {
+  display: none !important ;
+}
 
 .left_header_content img:hover, .right_header_content span:hover {
   cursor: pointer;
@@ -392,4 +391,14 @@ input {
 
 .footer_content i:hover {
   cursor: pointer;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }
