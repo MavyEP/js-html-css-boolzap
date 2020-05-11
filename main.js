@@ -43,7 +43,6 @@ $('#send_action').mousedown(function (event) {
   $('.container_chat').append(new_message);
   //riprendo di nuovo il testo nell'input e lo svuoto
   $('#chat_input:text').val("");
-  //faccio tornare il focus nell input
   }
 });
 
