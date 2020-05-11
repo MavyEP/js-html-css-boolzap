@@ -1,8 +1,7 @@
 //creo la variabile per l'input.
 var input_chat = $('#chat_input');
 
-
-$("#chat_input").focus( function () {
+$("#chat_input").focusin( function () {
   //recupero l'icona che deve scomparire
   var icona_mic = $('.footer_content .fa-microphone');
   var icona_send = $('.footer_content .fa-paper-plane');
@@ -14,7 +13,8 @@ $("#chat_input").focus( function () {
   });
 });
 
-$("#chat_input").focusout( function () {
+
+$("#chat_input").focusout( function (event) {
   //recupero l'icona che deve scomparire
   var icona_mic = $('.footer_content .fa-microphone');
   var icona_send = $('.footer_content .fa-paper-plane');
@@ -29,7 +29,8 @@ $("#chat_input").focusout( function () {
 
 
 //creo la funzione per scrivere il messaggio di invio preso dall input.
-$('#send_action').click(function () {
+$('#send_action').mousedown(function (event) {
+  event.preventDefault();
   //recupero cio che l'utente scrive nell input di input
   var input_chat_text = $('#chat_input:text').val();
   //prendo il nuovo elemento
@@ -43,13 +44,12 @@ $('#send_action').click(function () {
   //riprendo di nuovo il testo nell'input e lo svuoto
   $('#chat_input:text').val("");
   //faccio tornare il focus nell input
-  input_chat.focus();
   }
-})
+});
 
 //mando l'input di click icon anche con le key enter solo se si ha il focus nell input
 $('#chat_input').on("keypress", function(e){
        if(e.which == 13){
-           $('#send_action').click()
+           $('#send_action').mousedown()
        }
 });
