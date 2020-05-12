@@ -52,6 +52,7 @@ $('#send_action').mousedown(function (event) {
 $('#chat_input').on("keypress", function(e){
        if(e.which == 13){
            $('#send_action').mousedown()
+           $('#ricercachat_input').click()
        }
 });
 
@@ -78,7 +79,7 @@ input_ricercachat.click(function () {
 
 
 
-
+//CERCARE TRA LE CHAT
 function  cercatralechat() {
   //prendo il testo scritto dall'utente togliendo gli spazi e trasformandolo in lettere minuscole
   var input_chat_text = $('#ricercachat_input:text').val().trim().toLowerCase();
@@ -90,20 +91,18 @@ function  cercatralechat() {
         var nome_utente = $(this).text().toLowerCase();
         //se la chat scritta é uguale ad un elemeento in html allora
         if (nome_utente == input_chat_text) {
-          //nascondi tutti i div utente
+          $(this).parents(".utente").show();
+        } else {
           var utente = $('.users_messages .utente');
-          utente.toggleClass("disabled");
-          //lascia solo quello che matcha l input di chat
-          $(this).parents(".utente").removeClass("disabled");
+          $(this).parents(".utente").hide();
         }
       })
+  } else {
+    $(".utente").show();
   }
 }
 
-
-
-
-//Funzione di risposta
+//MAIN CHAT RISPOSTA AUTOMATICA COMPUTER
 function response() {
   var input_chat_text = ('ok');
   var new_message = $('.template .message_received').clone();
