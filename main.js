@@ -1,6 +1,11 @@
 //creo la variabile per l'input.
 var input_chat = $('#chat_input');
+//variabile per l'input per ricercare tra le chat
+var input_ricercachat = $('#ricercachat_input');
+//titolo di ogni chat
+var chat_di_un_utente = $('.users_messages .utente h3')
 
+//FOCUS SU INPUT MAIN
 $("#chat_input").focusin( function () {
   //recupero l'icona che deve scomparire
   var icona_mic = $('.footer_content .fa-microphone');
@@ -13,7 +18,7 @@ $("#chat_input").focusin( function () {
   });
 });
 
-
+//FOCUS OUT SU INPUT MAIN
 $("#chat_input").focusout( function (event) {
   //recupero l'icona che deve scomparire
   var icona_mic = $('.footer_content .fa-microphone');
@@ -48,24 +53,15 @@ $('#send_action').mousedown(function (event) {
   }
 });
 
-//mando l'input di click icon anche con le key enter solo se si ha il focus nell input
-$('#chat_input').on("keypress", function(e){
-       if(e.which == 13){
-           $('#send_action').mousedown()
-           $('#ricercachat_input').click()
-       }
-});
-
-//lavoro sul 2 input per ricercare chat
-
-//prendo l'input per la ricerca
-var input_ricercachat = $('#ricercachat_input');
-var chat_di_un_utente = $('.users_messages .utente h3')
 
 
+//CERCO TRA LE CHAT CHE GIA HO
 input_ricercachat.click(function () {
      cercatralechat();
 });
+
+
+
 
 // $('#ricercachat_input').on("keypress", function(e){
 //             console.log("hello");
@@ -77,6 +73,18 @@ input_ricercachat.click(function () {
 
 
 
+//CON IL TASTO ENTER FACCIO ....
+$('#chat_input').on("keypress", function(e){
+       if(e.which == 13){
+           $('#send_action').mousedown();
+       }
+});
+
+$('#ricercachat_input').on("keypress", function(e){
+       if(e.which == 13){
+           input_ricercachat.click();
+       }
+});
 
 
 //CERCARE TRA LE CHAT
@@ -90,17 +98,19 @@ function  cercatralechat() {
         //prendo il testo scritto dentro l h3 e lo transformo in lettere minuscole
         var nome_utente = $(this).text().toLowerCase();
         //se la chat scritta é uguale ad un elemeento in html allora
-        if (nome_utente == input_chat_text) {
+        if (nome_utente == input_chat_text || nome_utente.includes(input_chat_text)) {
           $(this).parents(".utente").show();
         } else {
           var utente = $('.users_messages .utente');
           $(this).parents(".utente").hide();
         }
       })
-  } else {
+  } //se l input torna ad essere vuoto
+   else {
     $(".utente").show();
   }
-}
+};
+
 
 //MAIN CHAT RISPOSTA AUTOMATICA COMPUTER
 function response() {
