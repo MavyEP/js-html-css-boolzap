@@ -55,6 +55,54 @@ $('#chat_input').on("keypress", function(e){
        }
 });
 
+//lavoro sul 2 input per ricercare chat
+
+//prendo l'input per la ricerca
+var input_ricercachat = $('#ricercachat_input');
+var chat_di_un_utente = $('.users_messages .utente h3')
+
+
+input_ricercachat.click(function () {
+     cercatralechat();
+});
+
+// $('#ricercachat_input').on("keypress", function(e){
+//             console.log("hello");
+//            cercatralechat(e);
+//
+// });
+
+
+
+
+
+
+
+
+function  cercatralechat() {
+  //prendo il testo scritto dall'utente togliendo gli spazi e trasformandolo in lettere minuscole
+  var input_chat_text = $('#ricercachat_input:text').val().trim().toLowerCase();
+  //il testo nell input non puo essere vuoto
+    if (input_chat_text !== ("")) {
+      //prendo ogni h3
+      chat_di_un_utente.each(function (){
+        //prendo il testo scritto dentro l h3 e lo transformo in lettere minuscole
+        var nome_utente = $(this).text().toLowerCase();
+        //se la chat scritta é uguale ad un elemeento in html allora
+        if (nome_utente == input_chat_text) {
+          //nascondi tutti i div utente
+          var utente = $('.users_messages .utente');
+          utente.toggleClass("disabled");
+          //lascia solo quello che matcha l input di chat
+          $(this).parents(".utente").removeClass("disabled");
+        }
+      })
+  }
+}
+
+
+
+
 //Funzione di risposta
 function response() {
   var input_chat_text = ('ok');
