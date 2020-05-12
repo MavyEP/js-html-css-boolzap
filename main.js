@@ -43,6 +43,8 @@ $('#send_action').mousedown(function (event) {
   $('.container_chat').append(new_message);
   //riprendo di nuovo il testo nell'input e lo svuoto
   $('#chat_input:text').val("");
+  //creo il messaggio di risposta
+  setTimeout(response, 2000)
   }
 });
 
@@ -52,3 +54,11 @@ $('#chat_input').on("keypress", function(e){
            $('#send_action').mousedown()
        }
 });
+
+//Funzione di risposta
+function response() {
+  var input_chat_text = ('ok');
+  var new_message = $('.template .message_received').clone();
+  new_message.text(input_chat_text);
+  $('.container_chat').append(new_message);
+  }
