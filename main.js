@@ -70,9 +70,6 @@ $('#chat_input').on("keypress", function(e){
 
 
 //AGGIORNO CONSTANTEMENTE L'INPUT CHAT COSI CHE SIA "LIVE"
-$('#ricercachat_input').on("keydown", function(){
-           input_ricercachat.click();
-});
 $('#ricercachat_input').on("keyup", function(){
            input_ricercachat.click();
 });
