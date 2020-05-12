@@ -49,7 +49,7 @@ $('#send_action').mousedown(function (event) {
   //riprendo di nuovo il testo nell'input e lo svuoto
   $('#chat_input:text').val("");
   //creo il messaggio di risposta
-  setTimeout(response, 2000)
+  setTimeout(response, 1000)
   }
 });
 
@@ -61,18 +61,6 @@ input_ricercachat.click(function () {
 });
 
 
-
-
-// $('#ricercachat_input').on("keypress", function(e){
-//             console.log("hello");
-//            cercatralechat(e);
-//
-// });
-
-
-
-
-
 //CON IL TASTO ENTER FACCIO ....
 $('#chat_input').on("keypress", function(e){
        if(e.which == 13){
@@ -80,10 +68,13 @@ $('#chat_input').on("keypress", function(e){
        }
 });
 
-$('#ricercachat_input').on("keypress", function(e){
-       if(e.which == 13){
+
+//AGGIORNO CONSTANTEMENTE L'INPUT CHAT COSI CHE SIA "LIVE"
+$('#ricercachat_input').on("keydown", function(){
            input_ricercachat.click();
-       }
+});
+$('#ricercachat_input').on("keyup", function(){
+           input_ricercachat.click();
 });
 
 
