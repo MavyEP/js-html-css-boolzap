@@ -4,6 +4,9 @@ var input_chat = $('#chat_input');
 var input_ricercachat = $('#ricercachat_input');
 //titolo di ogni chat
 var chat_di_un_utente = $('.users_messages .utente h3')
+//variabile icona delete message
+var arrow = $("#arrow");
+
 //parto con il focus sulla chat di default
 $('#chat_input').focus();
 
@@ -32,7 +35,6 @@ $("#chat_input").focusout( function (event) {
     icona_mic.removeClass('disabled');
   });
 });
-
 
 
 //creo la funzione per scrivere il messaggio di invio preso dall input.
@@ -64,7 +66,7 @@ $('.users_messages .utente').click( function (){
   //modifico l'elemento clonato togliendo la classe utente e mettendo la classe utente_active con le rispettive regole css
   utente_cliccato.addClass("utente_active");
   utente_cliccato.removeClass("utente");
-  //pusho il nuovo div nell header 
+  //pusho il nuovo div nell header
   $(".header_main .container_active").append(utente_cliccato);
   // tolgo il background grigio e  lo metto sul selezionato
   $('.users_messages .utente.gray_background').removeClass("gray_background");
@@ -85,10 +87,59 @@ $('.users_messages .utente').click( function (){
 });
 
 
+//CREO UNA FUNZIONE PER LA QUALE QUANDO CAMBIO CHAT CLICCANDO A SINITRA NEGLI UTENTI IL FOCUS RIMANGA NELL INPUT TESTO
+//E NON FA CAMBIARE L'ICONA IN BASSO ALTRIMENTI IL SEMPLICE CLICK FUNGEREBBE COME FOCUSOUT
+$('.users_messages .utente').on("mousedown" , function() {
+  event.preventDefault();
+});
+
+// CREO LA FUNZIONE PER CANCELLARE O AVERE INFORMAZIONI SU UN MESSAGGIO
+$(".container_chat .chat p").mouseenter( function(){
+  $(this).append(arrow);
+  arrow.removeClass("disabled");
+});
+
+$(".container_chat .chat  p").mouseleave( function(){
+  arrow.addClass("disabled");
+});
+
+
+
+
+
+
+
+
+//!!!!!!!!!!!!!!!!"""""""""""""""""" CHIEDERE""""!!!!!!!!!!!!!!!!!!!!!!
+//!!!!!!!!!!!!!!!!"""""""""""""""""" CHIEDERE""""!!!!!!!!!!!!!!!!!!!!!!
+//!!!!!!!!!!!!!!!!"""""""""""""""""" CHIEDERE""""!!!!!!!!!!!!!!!!!!!!!!
+
+$(".container_chat").delegate(".new_chat",  "mouseenter" , function (){
+  $(this).append(arrow);
+  arrow.removeClass("disabled");
+})
+
+$(".container_chat").delegate(".new_chat",  "mouseleave" , function (){
+  arrow.addClass("disabled");
+})
+
+
+//!!!!!!!!^^^^^^^^^^^^"""""""""" CHIEDERE""^^^^^^^^^^^""!!!!!!!!!!!!!!!!!!!!!!
+//!!!!!!!!!!!!!!!!"""""""""""""""""" CHIEDERE""""!!!!!!!!!!!!!!!!!!!!!!
+//!!!!!!!!!!!!!!!!"""""""""""""""""" CHIEDERE""""!!!!!!!!!!!!!!!!!!!!!!
+
+
+
+
+
+
+
+
 //CERCO TRA LE CHAT CHE GIA HO
 input_ricercachat.click(function () {
      cercatralechat();
 });
+
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //!!!!!!!!!!!!DA CONTROLLARE SE HA SENSO METTERLO !!!!!!!!!!!!

@@ -288,6 +288,23 @@ input {
   overflow-y: scroll;
 }
 
+.chat::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.chat p {
+  position: relative;
+}
+
+#arrow {
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  font-size: 8px;
+}
+
 .container_chat {
   width: 85%;
   margin: auto;
@@ -303,7 +320,7 @@ input {
 }
 
 .message_received {
-  padding: 15px;
+  padding: 12px 22px;
   background-color: white;
   border-radius: 10px;
   margin-top: 15px;
@@ -312,7 +329,7 @@ input {
 }
 
 .message_sent {
-  padding: 15px;
+  padding: 12px 22px;
   background-color: lightgreen;
   border-radius: 10px;
   margin-top: 15px;
@@ -359,6 +376,28 @@ input {
   display: none;
 }
 
+.edit_message_options {
+  background-color: rgba(234, 234, 234, 1);
+  position: absolute;
+  border-radius: 10px;
+  bottom: 100;
+  right: 0;
+}
+
+.edit_message_options ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  list-style-type: none;
+}
+
+.edit_message_options li {
+  text-decoration: none;
+  padding: 10px;
+}
+
+
 /* !!! SEZIONE PER GLI HOVER O ACTIVE O FOCUS !!! */
 .active {
   display: block !important ;
@@ -393,6 +432,10 @@ input {
 }
 
 .footer_content i:hover {
+  cursor: pointer;
+}
+
+.chat P:hover{
   cursor: pointer;
 }
 
