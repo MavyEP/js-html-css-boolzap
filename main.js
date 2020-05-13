@@ -55,18 +55,32 @@ $('#send_action').mousedown(function (event) {
   }
 });
 
-// PROVA PER CAMBIARE CHAT AL CLICK SU UTENTI
-// PRENDO IL CLICK SU utente_active
+// FUNZIONE CLICK SU CHAT E CAMBIARE LE CHAT DA APRIRE IN MAIN CONTAINER
 $('.users_messages .utente').click( function (){
+  //prendo il div utente nell html e lo clono
+  var utente_cliccato = $(this).clone();
+  //faccio sparire l'utente presente di default
+  $(".header_main .container_active .utente_active").addClass("disabled");
+  //modifico l'elemento clonato togliendo la classe utente e mettendo la classe utente_active con le rispettive regole css
+  utente_cliccato.addClass("utente_active");
+  utente_cliccato.removeClass("utente");
+  //pusho il nuovo div nell header 
+  $(".header_main .container_active").append(utente_cliccato);
+  // tolgo il background grigio e  lo metto sul selezionato
   $('.users_messages .utente.gray_background').removeClass("gray_background");
   $(this).addClass("gray_background")
+  //prendo l'elemento cliccato e vado a prenderne il titolo ovvero lh3 ovvero il nome utente
   var utente_cliccato = $(this).index();
   var nome_utente_cliccato = $(".users_messages .utente h3").index();
+  //faccio in modo che l'utente cliccato diventa rappresentato solo dal nome dell h3
   utente_cliccato == nome_utente_cliccato;
   var nome = $(".users_messages .utente h3").eq(utente_cliccato).text().toLowerCase();
+  //prendo l'elemento della chat corrispondente tramite l attributo data
   var chat_grande_main = $(".chat[data-chat='" + nome + "']");
+  //faccio sparire le altre chat e lascio aperta solo quella selezionata a sinistra tra gli utenti
   $(".container_chat .chat.active").removeClass("active");
   chat_grande_main.addClass("active")
+  //al click a sinistra il focus passa sull'input di chat per essere gia pronto a scrivere
   $('#chat_input').focus();
 });
 
@@ -77,10 +91,13 @@ input_ricercachat.click(function () {
 });
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-input_ricercachat.focusout(function () {
+//!!!!!!!!!!!!DA CONTROLLARE SE HA SENSO METTERLO !!!!!!!!!!!!
+input_ricercachat.focusin(function () {
     input_chat_text = $('#ricercachat_input:text').val("");
     $('.users_messages .utente').show();
-});// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+});
+//!!!!!!!!!!!!DA CONTROLLARE SE HA SENSO METTERLO !!!!!!!!!!!!
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 //CON IL TASTO ENTER FACCIO ....
 $('#chat_input').on("keypress", function(e){
