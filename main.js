@@ -4,6 +4,8 @@ var input_chat = $('#chat_input');
 var input_ricercachat = $('#ricercachat_input');
 //titolo di ogni chat
 var chat_di_un_utente = $('.users_messages .utente h3')
+//parto con il focus sulla chat di default
+$('#chat_input').focus();
 
 //FOCUS SU INPUT MAIN
 $("#chat_input").focusin( function () {
@@ -45,7 +47,7 @@ $('#send_action').mousedown(function (event) {
   //copio il testo dell input all'interno del p elemento.
   new_message.text(input_chat_text);
   //pusho l elemento con il nuovo testo nella chat
-  $('.container_chat').append(new_message);
+  $('.container_chat > div.active').append(new_message);
   //riprendo di nuovo il testo nell'input e lo svuoto
   $('#chat_input:text').val("");
   //creo il messaggio di risposta
@@ -53,6 +55,20 @@ $('#send_action').mousedown(function (event) {
   }
 });
 
+// PROVA PER CAMBIARE CHAT AL CLICK SU UTENTI
+// PRENDO IL CLICK SU utente_active
+$('.users_messages .utente').click( function (){
+  $('.users_messages .utente.gray_background').removeClass("gray_background");
+  $(this).addClass("gray_background")
+  var utente_cliccato = $(this).index();
+  var nome_utente_cliccato = $(".users_messages .utente h3").index();
+  utente_cliccato == nome_utente_cliccato;
+  var nome = $(".users_messages .utente h3").eq(utente_cliccato).text().toLowerCase();
+  var chat_grande_main = $(".chat[data-chat='" + nome + "']");
+  $(".container_chat .chat.active").removeClass("active");
+  chat_grande_main.addClass("active")
+  $('#chat_input').focus();
+});
 
 
 //CERCO TRA LE CHAT CHE GIA HO
@@ -60,6 +76,11 @@ input_ricercachat.click(function () {
      cercatralechat();
 });
 
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+input_ricercachat.focusout(function () {
+    input_chat_text = $('#ricercachat_input:text').val("");
+    $('.users_messages .utente').show();
+});// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 //CON IL TASTO ENTER FACCIO ....
 $('#chat_input').on("keypress", function(e){
@@ -105,5 +126,5 @@ function response() {
   var input_chat_text = ('ok');
   var new_message = $('.template .message_received').clone();
   new_message.text(input_chat_text);
-  $('.container_chat').append(new_message);
+  $('.container_chat > div.active').append(new_message);
   }

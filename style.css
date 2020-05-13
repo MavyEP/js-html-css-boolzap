@@ -294,6 +294,10 @@ input {
   height: 100%;
 }
 
+.container_chat > div {
+  display: none;
+}
+
 .container_chat {
     font-size: 13px;
 }
@@ -356,6 +360,9 @@ input {
 }
 
 /* !!! SEZIONE PER GLI HOVER O ACTIVE O FOCUS !!! */
+.active {
+  display: block !important ;
+}
 
 .disabled {
   display: none !important ;
