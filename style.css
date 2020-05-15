@@ -326,6 +326,7 @@ input {
   margin-top: 15px;
   float: left;
   clear: both;
+  word-wrap:break-word;
 }
 
 .message_sent {
@@ -335,6 +336,8 @@ input {
   margin-top: 15px;
   float: right;
   clear: both;
+  max-width: 50%;
+  word-wrap:break-word;
 }
 
 .margin_top_chat {
@@ -380,8 +383,7 @@ input {
   background-color: rgba(234, 234, 234, 1);
   position: absolute;
   border-radius: 10px;
-  bottom: 100;
-  right: 0;
+  bottom: 10;
 }
 
 .edit_message_options ul {
@@ -394,7 +396,11 @@ input {
 
 .edit_message_options li {
   text-decoration: none;
-  padding: 10px;
+  padding: 10px 20px;
+}
+
+.edit_message_options li:last-child{
+  border-top: 1px solid rgba(200, 200, 200, 1);
 }
 
 

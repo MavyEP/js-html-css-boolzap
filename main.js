@@ -104,16 +104,7 @@ $(".container_chat .chat  p").mouseleave( function(){
 });
 
 
-
-
-
-
-
-
-//!!!!!!!!!!!!!!!!"""""""""""""""""" CHIEDERE""""!!!!!!!!!!!!!!!!!!!!!!
-//!!!!!!!!!!!!!!!!"""""""""""""""""" CHIEDERE""""!!!!!!!!!!!!!!!!!!!!!!
-//!!!!!!!!!!!!!!!!"""""""""""""""""" CHIEDERE""""!!!!!!!!!!!!!!!!!!!!!!
-
+// FUNZIONE HOOVER PER LE FRECCE INFO SUI MESSAGGI
 $(".container_chat").delegate(".new_chat",  "mouseenter" , function (){
   $(this).append(arrow);
   arrow.removeClass("disabled");
@@ -123,22 +114,14 @@ $(".container_chat").delegate(".new_chat",  "mouseleave" , function (){
   arrow.addClass("disabled");
 })
 
-
-//!!!!!!!!^^^^^^^^^^^^"""""""""" CHIEDERE""^^^^^^^^^^^""!!!!!!!!!!!!!!!!!!!!!!
-//!!!!!!!!!!!!!!!!"""""""""""""""""" CHIEDERE""""!!!!!!!!!!!!!!!!!!!!!!
-//!!!!!!!!!!!!!!!!"""""""""""""""""" CHIEDERE""""!!!!!!!!!!!!!!!!!!!!!!
-
-
-
-
-
-
-
-
 //CERCO TRA LE CHAT CHE GIA HO
 input_ricercachat.click(function () {
      cercatralechat();
 });
+
+
+
+
 
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -149,6 +132,29 @@ input_ricercachat.focusin(function () {
 });
 //!!!!!!!!!!!!DA CONTROLLARE SE HA SENSO METTERLO !!!!!!!!!!!!
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
+
+
+
+
+
+$(document).on("click" , ".container_chat p", function () {
+  var dropdown = $('.template .edit_message_options').clone();
+  if (!$(this).children().hasClass("edit_message_options") ){
+    $(this).append(dropdown);
+  } else if ($(this).children().hasClass("edit_message_options")) {
+    $(this).children(".edit_message_options").remove();
+  };
+});
+
+
+
+
+
+
+
 
 //CON IL TASTO ENTER FACCIO ....
 $('#chat_input').on("keypress", function(e){
