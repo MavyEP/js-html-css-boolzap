@@ -6,6 +6,7 @@
     <link rel="icon" href="img/spotify.ico">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/912c80e664.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
     <title>Spotify - Web</title>
   </head>
@@ -173,10 +174,11 @@
                 <li>Delete message</li>
               </ul>
             </div>
-            <i id="arrow" class="fas fa-chevron-down"></i>
-            <p class=" new_chat message_sent"</p>
-            <p class=" new_chat message_received"</p>
+            <i class="fas fa-chevron-down"></i>
           </div>
+          <script id="entry-template" type="text/x-handlebars-template">
+            <p class=" new_chat {{class}}"> {{message}} </p>
+         </script>
         </div>
       </div>
     </div>

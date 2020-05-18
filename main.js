@@ -5,7 +5,7 @@ var input_ricercachat = $('#ricercachat_input');
 //titolo di ogni chat
 var chat_di_un_utente = $('.users_messages .utente h3')
 //variabile icona delete message
-var arrow = $("#arrow");
+
 
 //parto con il focus sulla chat di default
 $('#chat_input').focus();
@@ -37,25 +37,25 @@ $("#chat_input").focusout( function (event) {
 });
 
 
-//creo la funzione per scrivere il messaggio di invio preso dall input.
-$('#send_action').mousedown(function (event) {
-  event.preventDefault();
-  //recupero cio che l'utente scrive nell input di input
-  var input_chat_text = $('#chat_input:text').val();
-  //prendo il nuovo elemento
-  var new_message = $('.template .message_sent').clone();
-  //controllo che l input di testo non sia vuoto altrimenti non faccio niente
-  if (input_chat_text !== ("")) {
-  //copio il testo dell input all'interno del p elemento.
-  new_message.text(input_chat_text);
-  //pusho l elemento con il nuovo testo nella chat
-  $('.container_chat > div.active').append(new_message);
-  //riprendo di nuovo il testo nell'input e lo svuoto
-  $('#chat_input:text').val("");
-  //creo il messaggio di risposta
-  setTimeout(response, 1000)
-  }
-});
+// //creo la funzione per scrivere il messaggio di invio preso dall input.
+// $('#send_action').mousedown(function (event) {
+//   event.preventDefault();
+//   //recupero cio che l'utente scrive nell input di input
+//   var input_chat_text = $('#chat_input:text').val();
+//   //prendo il nuovo elemento
+//   var new_message = $('.template .message_sent').clone();
+//   //controllo che l input di testo non sia vuoto altrimenti non faccio niente
+//   if (input_chat_text !== ("")) {
+//   //copio il testo dell input all'interno del p elemento.
+//   new_message.text(input_chat_text);
+//   //pusho l elemento con il nuovo testo nella chat
+//   $('.container_chat > div.active').append(new_message);
+//   //riprendo di nuovo il testo nell'input e lo svuoto
+//   $('#chat_input:text').val("");
+//   //creo il messaggio di risposta
+//   setTimeout(response, 1000)
+//   }
+// });
 
 // FUNZIONE CLICK SU CHAT E CAMBIARE LE CHAT DA APRIRE IN MAIN CONTAINER
 $('.users_messages .utente').click( function (){
@@ -95,22 +95,26 @@ $('.users_messages .utente').on("mousedown" , function() {
 
 // CREO LA FUNZIONE PER CANCELLARE O AVERE INFORMAZIONI SU UN MESSAGGIO
 $(".container_chat .chat p").mouseenter( function(){
+  var arrow = $(".fa-chevron-down");
   $(this).append(arrow);
   arrow.removeClass("disabled");
 });
 
 $(".container_chat .chat  p").mouseleave( function(){
+  var arrow = $(".fa-chevron-down");
   arrow.addClass("disabled");
 });
 
 
 // FUNZIONE HOOVER PER LE FRECCE INFO SUI MESSAGGI
 $(".container_chat").delegate(".new_chat",  "mouseenter" , function (){
+  var arrow = $(".fa-chevron-down");
   $(this).append(arrow);
   arrow.removeClass("disabled");
 })
 
 $(".container_chat").delegate(".new_chat",  "mouseleave" , function (){
+  var arrow = $(".fa-chevron-down");
   arrow.addClass("disabled");
 })
 
@@ -118,8 +122,6 @@ $(".container_chat").delegate(".new_chat",  "mouseleave" , function (){
 input_ricercachat.click(function () {
      cercatralechat();
 });
-
-
 
 
 
@@ -137,9 +139,6 @@ input_ricercachat.focusin(function () {
 
 
 
-
-
-
 $(document).on("click" , ".container_chat p", function () {
   var dropdown = $('.template .edit_message_options').clone();
   if (!$(this).children().hasClass("edit_message_options") ){
@@ -148,10 +147,6 @@ $(document).on("click" , ".container_chat p", function () {
     $(this).children(".edit_message_options").remove();
   };
 });
-
-
-
-
 
 
 
@@ -195,10 +190,45 @@ function  cercatralechat() {
 };
 
 
-//MAIN CHAT RISPOSTA AUTOMATICA COMPUTER
-function response() {
-  var input_chat_text = ('ok');
-  var new_message = $('.template .message_received').clone();
-  new_message.text(input_chat_text);
-  $('.container_chat > div.active').append(new_message);
-  }
+
+
+
+  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  //AGGIUNTA DEL HANDLEBARS!
+ //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+ var source   = $("#entry-template").html();
+ var template = Handlebars.compile(source);
+
+ var testo_scritto_utente = {
+   message : '' ,
+   class : ''
+ };
+
+
+ //creo la funzione per scrivere il messaggio di invio preso dall input.
+ $('#send_action').mousedown(function (event) {
+   event.preventDefault();
+   var input_chat_text = $('#chat_input:text').val();
+   if (input_chat_text !== ("")) {
+     testo_scritto_utente.message = input_chat_text;
+     testo_scritto_utente.class = "message_sent";
+     var html = template(testo_scritto_utente);
+   $('.container_chat > div.active').append(html);
+   $('#chat_input:text').val("");
+   setTimeout(response, 1000)
+   }
+ });
+
+ //MAIN CHAT RISPOSTA AUTOMATICA COMPUTER
+ function response() {
+   testo_scritto_utente.message = ('Ci possiamo sentire dopo?');
+   testo_scritto_utente.class = "message_received";
+   var html = template(testo_scritto_utente);
+   $('.container_chat > div.active').append(html);
+   }
+
+
+     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+     //AGGIUNTA DEL HANDLEBARS!
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
